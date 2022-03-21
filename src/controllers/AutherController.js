@@ -42,6 +42,7 @@ const loginAuther = async function (req, res) {
           status: false,
           msg: "auther name or the password is not corerct",
         });
+        
       let token = jwt.sign(
         { autherID: auther._id.toString() }, 'shubham-thorium'
       );

@@ -11,16 +11,21 @@ let authenticate = function (req, res, next) {
     if (!decodedToken) return res.status(401).send({ status: false, msg: "token is not valid" })
 
     // Token authorization-----------------------------
-    req.user = decodedToken.autherID
-          
-    next()
 
-  }
+    req.user = decodedToken.autherID
+  // let logedInUser=req.params.authorID;
+ 
+  // if(req.user!==logedInUser) return res.status(401).send({status:false,msg:"You are not an authorized"})
+  next(); 
+  } 
   catch (err) {
     console.log("This is the error :", err.message)
     return res.status(500).send({ msg: "Error", error: err.message })
   }
 }
+
+
+  
 
 
 
