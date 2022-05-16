@@ -7,11 +7,11 @@ const BlogController= require("../controllers/blogController")
 
 const middleware=require("../middleware/authh")
 
-// Author routes------------------------------------------------------------------------
-router.post("/auther",AutherController.createauther)
-router.post("/login",AutherController.loginAuther)
+// Author routes---------------------------------------------------------------
+router.post("/auther",AutherController.createAuthor)
+router.post("/login",AutherController.loginAuthor)
 
-// Blog routes--------------------------------------------------------------------------
+// Blog routes-----------------------------------------------------------------
 router.post("/blog", middleware.authenticate, BlogController.createblog)
 router.get("/getblogg", middleware.authenticate, BlogController.getBlog)
 router.put("/updateblogg/:blogID", middleware.authenticate, BlogController.updateblog)

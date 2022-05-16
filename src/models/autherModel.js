@@ -1,25 +1,39 @@
 const mongoose = require('mongoose');
-// const validator = require('validator');
 const autherSchema = new mongoose.Schema({
 
-        firstName: { type: String, required: true, trim: true },
+        firstName: {
+                type: String,
+                required: true,
+                trim: true
+        },
 
-        lastName: { type: String, required: true, trim: true },
+        lastName: {
+                type: String,
+                required: true,
+                trim: true
+        },
 
-        title: { type: String, required: true, enum: ["Mr", "Mrs", "Miss"], trim:true },
+        title: {
+                type: String,
+                required: true,
+                enum: ["Mr", "Mrs", "Miss"],
+                trim: true
+        },
 
-        email:{
-                type:String,
-                unique:true,
+        email: {
+                type: String,
+                unique: true,
                 trim: true,
-                // validate:{
-                //       validator: validator.isEmail,
-                //       message: '{VALUE} is not a valid email',
-                //       isAsync: false
-                //     }
-                },
+                match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
+                lowercase: true
+        },
 
-        password: { type: String, required: true, trim: true }
+        password: {
+                type: String,
+                required: true,
+                trim: true,
+                match: [/^[a-zA-Z0-9!@#$%^&*]{8,15}$/, 'Please fill a valid password']
+        }
 
 }, { timestamps: true });
 
